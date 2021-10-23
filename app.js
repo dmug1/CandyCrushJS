@@ -25,6 +25,9 @@ createBoard()
 
 
 //drag the candies
+let colorBeingDragged
+
+
 squares.forEach(square => square.addEventListener('dragstart',dragStart))
 squares.forEach(square => square.addEventListener('dragend',dragEnd))
 squares.forEach(square => square.addEventListener('dragover',dragOver))
