@@ -57,12 +57,22 @@ function dragLeave() {
 
 function dragEnd(e){
     console.log(this.id, 'dragEnd')
+
+    let validMoves = [squareIdBeingDragged -1 ,
+         squareIdBeingDragged -width,
+         squareIdBeingDragged +1,
+         squareIdBeingDragged +width
+    ]
+
+    let validMove = validMoves.includes(squareIdBeingReplaced)
 }
 
 function dragDrop(){    
     console.log(this.id, 'dragDrop')
+    console.log(colorBeingDragged)
     colorBeingReplaced = this.style.backgroundColor
     squareIdBeingReplaced = parseInt(this.id)
+    this.style .backgroundColor = colorBeingDragged
     squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced
 }
 
