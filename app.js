@@ -34,8 +34,21 @@ let squareIdBeingReplaced
 squares.forEach(square => square.addEventListener('dragdrop', dragDrop))
 squares.forEach(square => square.addEventListener('dragstart',dragStart))
 squares.forEach(square => square.addEventListener('dragend',dragEnd))
-squares.forEach(square => square.addEventListener('dragover',dragOver))
-squares.forEach(square => square.addEventListener('dragenter',dragEnter))
+//'dragover',dragOver))
+
+squares.forEach(
+    square => square.addEventListener("dragover", function( event ) {
+    event.preventDefault();
+    }
+, false))
+
+squares.forEach(
+    square => square.addEventListener("dragenter", function( event ) {
+    event.preventDefault();
+    }
+, false))
+
+//squares.forEach(square => square.addEventListener('dragenter',dragEnter))
 squares.forEach(square => square.addEventListener('dragleave',dragLeave))
 
 function dragStart(){
@@ -45,14 +58,23 @@ function dragStart(){
 
 function dragOver(e) {
     e.preventDefault()
+    console.log("DragOver")
 }
 
 function dragEnter(e) {
     e.preventDefault()
+    console.log("DragEnter")
 }
 
 function dragLeave() {
-    this.style.backgroundColor = ''
+    //this.style.backgroundColor = ''
+}
+
+function dragDrop() {
+    colorBeingReplaced = this.style.backgroundColor
+    squareIdBeingReplaced = parseInt(this.id)
+    this.style.backgroundColor = colorBeingDragged
+    squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced
 }
 
 function dragEnd(e){
@@ -65,16 +87,9 @@ function dragEnd(e){
     ]
 
     let validMove = validMoves.includes(squareIdBeingReplaced)
+    
 }
 
-function dragDrop(){    
-    console.log(this.id, 'dragDrop')
-    console.log(colorBeingDragged)
-    colorBeingReplaced = this.style.backgroundColor
-    squareIdBeingReplaced = parseInt(this.id)
-    this.style .backgroundColor = colorBeingDragged
-    squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced
-}
 
 
 
