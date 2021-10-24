@@ -31,7 +31,7 @@ let squareIdBeingDragged
 let squareIdBeingReplaced
 
 
-squares.forEach(square => square.addEventListener('dragdrop',dragDrop))
+squares.forEach(square => square.addEventListener('dragdrop', dragDrop))
 squares.forEach(square => square.addEventListener('dragstart',dragStart))
 squares.forEach(square => square.addEventListener('dragend',dragEnd))
 squares.forEach(square => square.addEventListener('dragover',dragOver))
@@ -43,18 +43,16 @@ function dragStart(){
     squareIdBeingDragged = parseInt(this.id)
 }
 
-function dragOver(e){
+function dragOver(e) {
     e.preventDefault()
-    console.log(this.id, 'dragOver')
 }
 
-function dragEnter(e){
+function dragEnter(e) {
     e.preventDefault()
-    console.log(this.id, 'dragEnter')
 }
 
-function dragLeave(){
-    console.log(this.id, 'dragLeave')
+function dragLeave() {
+    this.style.backgroundColor = ''
 }
 
 function dragEnd(e){
