@@ -26,32 +26,46 @@ createBoard()
 
 //drag the candies
 let colorBeingDragged
+let colorBeingReplaced
+let squareIdBeingDragged
+let squareIdBeingReplaced
 
 
+squares.forEach(square => square.addEventListener('dragdrop',dragDrop))
 squares.forEach(square => square.addEventListener('dragstart',dragStart))
 squares.forEach(square => square.addEventListener('dragend',dragEnd))
 squares.forEach(square => square.addEventListener('dragover',dragOver))
 squares.forEach(square => square.addEventListener('dragenter',dragEnter))
 squares.forEach(square => square.addEventListener('dragleave',dragLeave))
-squares.forEach(square => square.addEventListener('dragdrop',dragDrop))
 
 function dragStart(){
-    console.log(this.id, 'dragstart')
+    colorBeingDragged = this.style.backgroundColor
+    squareIdBeingDragged = parseInt(this.id)
 }
-function dragEnd(){
-    console.log(this.id, 'dragend')
+
+function dragOver(e){
+    e.preventDefault()
+    console.log(this.id, 'dragOver')
 }
-function dragOver(){
-    console.log(this.id, 'dragover')
+
+function dragEnter(e){
+    e.preventDefault()
+    console.log(this.id, 'dragEnter')
 }
-function dragEnter(){
-    console.log(this.id, 'dragenter')
-}
+
 function dragLeave(){
-    console.log(this.id, 'dragleave')
+    console.log(this.id, 'dragLeave')
 }
-function dragDrop(){
-    console.log(this.id, 'dragdrop')
+
+function dragEnd(e){
+    console.log(this.id, 'dragEnd')
+}
+
+function dragDrop(){    
+    console.log(this.id, 'dragDrop')
+    colorBeingReplaced = this.style.backgroundColor
+    squareIdBeingReplaced = parseInt(this.id)
+    squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced
 }
 
 
